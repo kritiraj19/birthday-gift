@@ -12,14 +12,14 @@
     <div id="drag-container">
         <div id="spin-container">
             <!-- Add your image or video here -->
-            <img src="images/1.jpg" alt="">
-            <img src="images/2.jpg" alt="">
-            <img src="images/3.jpg" alt="">
-            <img src="images/4.jpg" alt="">
-            <img src="images/5.jpg" alt="">
-            <img src="images/6.jpg" alt="">
-            <img src="images/7.jpg" alt="">
-            <img src="images/8.jpg" alt="">
+            <img src="images/1.jpg" alt="" class="playAudioButton">
+            <img src="images/2.jpg" alt="" class="playAudioButton">
+            <img src="images/3.jpg" alt="" class="playAudioButton">
+            <img src="images/4.jpg" alt="" class="playAudioButton">
+            <img src="images/5.jpg" alt="" class="playAudioButton">
+            <img src="images/6.jpg" alt="" class="playAudioButton">
+            <img src="images/7.jpg" alt="" class="playAudioButton">
+            <img src="images/8.jpg" alt="" class="playAudioButton">
             <!-- <video controls autoplay="autoplay" loop>
                 <source src="" type="video/mp4">
             </video> -->
@@ -28,7 +28,34 @@
         </div>
         <div id="ground"></div>
     </div>
+
+    <!-- Add audio element -->
+    <audio id="birthdayAudio" src="aud.mp3" preload="auto"></audio>
+
+    <!-- Add a button to play the audio -->
+    <!-- <button id="playAudioButton" style="display: none;">Play Audio</button> -->
+
     <script src="script.js"></script>
+    <script>
+        // Function to play the audio
+        const playAudio = () => {
+            const audio = document.getElementById('birthdayAudio');
+            audio.play().catch(() => {
+                // Show the play button if autoplay fails
+                // document.getElementById('playAudioButton').style.display = 'block';
+            });
+        };
+
+        // Try to play audio when the page loads
+        window.addEventListener('load', playAudio);
+
+        // Play audio when any image with the class 'playAudioButton' is clicked
+        const images = document.querySelectorAll('.playAudioButton');
+        images.forEach(image => {
+            image.addEventListener('click', playAudio);
+        });
+    </script>
+
 </body>
 
 </html>
